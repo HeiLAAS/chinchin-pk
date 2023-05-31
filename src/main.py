@@ -223,7 +223,7 @@ async def message_processor(
     # 查询牛子信息 (search)
     # FIXME: 注意因为是模糊匹配，所以 “牛子” 的命令要放到所有 "牛子xxx" 命令的最后
     if match_func(KEYWORDS.get("chinchin"), message):
-        return Chinchin_info.entry_chinchin(ctx)
+        return await Chinchin_info.entry_chinchin(ctx)
 
     # 牛子修炼：在修炼状态不能进行其他操作
     if is_current_planting:
