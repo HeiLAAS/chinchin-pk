@@ -195,18 +195,18 @@ async def message_processor(
     # >>> 匹配阶段
     # 牛子仙境 (search)
     if match_func(KEYWORDS.get("farm"), message):
-        return Chinchin_farm.entry_farm_info(ctx)
+        return await Chinchin_farm.entry_farm_info(ctx)
     # 牛子修炼
     if match_func(KEYWORDS.get("farm_start"), message):
-        return Chinchin_farm.entry_farm(ctx)
+        return await Chinchin_farm.entry_farm(ctx)
 
     # 牛子排名 (search)
     if match_func(KEYWORDS.get("ranking"), message):
-        return Chinchin_info.entry_ranking(ctx)
+        return await Chinchin_info.entry_ranking(ctx)
 
     # 牛子成就 (search)
     if match_func(KEYWORDS.get("badge"), message):
-        return Chinchin_badge.entry_badge(ctx)
+        return await Chinchin_badge.entry_badge(ctx)
 
     # 牛子转生 (opera)
     if match_func(KEYWORDS.get("rebirth"), message):
@@ -214,11 +214,11 @@ async def message_processor(
         if is_current_planting:
             return eager_return()
         else:
-            return Chinchin_upgrade.entry_rebirth(ctx)
+            return await Chinchin_upgrade.entry_rebirth(ctx)
 
     # 牛友 (search)
     if match_func(KEYWORDS.get("friends"), message):
-        return Chinchin_friends.entry_friends(ctx)
+        return await Chinchin_friends.entry_friends(ctx)
 
     # 查询牛子信息 (search)
     # FIXME: 注意因为是模糊匹配，所以 “牛子” 的命令要放到所有 "牛子xxx" 命令的最后
@@ -227,7 +227,7 @@ async def message_processor(
 
     # 牛子修炼：在修炼状态不能进行其他操作
     if is_current_planting:
-        return eager_return()
+        return await eager_return()
 
     # 对别人的 (opera)
     if at_qq:
