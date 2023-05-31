@@ -21,7 +21,6 @@ async def chichipk():
         from_user = g.from_user
         group = g.from_group
         nickname = g.from_user_name
-        print(g.images)
 
         def impl_at_segment(qq: int):
             # 伪 at ，因为真 at 会风控
@@ -32,14 +31,15 @@ async def chichipk():
             return
 
         if g.at_list != [] :
-            data = len(g.from_user_name)+2
+            atlist = g.at_list[0].Nick
+            data = len(atlist)+2
             at_data = g.text[data:]
             # FIXME: at all 时 at_data 为 None
-            if not at_data:
-                return
+            # if not at_data:
+            #     return
             # 只对 at 一个人生效
-            if len(g.at_list) != 1:
-                return
+            # if len(g.at_list) != 1:
+            #     return 0
             content = at_data
             if not match_func(keywords=keywords, text=content):
                 return
