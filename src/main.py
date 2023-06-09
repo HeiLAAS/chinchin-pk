@@ -141,7 +141,7 @@ async def message_processor(
 
     # 牛子帮助 (search)
     if match_func(KEYWORDS.get("help"), message):
-        return Chinchin_help.entry_help(ctx)
+        return await Chinchin_help.entry_help(ctx)
 
     # 注册牛子
     if match_func(KEYWORDS.get("sign_up"), message):
